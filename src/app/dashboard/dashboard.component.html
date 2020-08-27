@@ -1,0 +1,22 @@
+<table class="table table-sm table-dark table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Author</th>
+        <th scope="col">Published On</th>
+        <th scope="col">Available</th>
+      </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let book of books | async; let i = index;">
+      <tr [routerLink] = "['edit', book.id]">
+        <th scope="row">{{i}}</th>
+        <td>{{book.name}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.publishedOn}}</td>
+        <td>{{book.quantityAvailable}}</td>
+      </tr> 
+    </ng-container>    
+    </tbody>
+  </table>
