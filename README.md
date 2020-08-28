@@ -29,3 +29,5 @@
 11. Talk about kentcdodds testing strategies. 
 12. Write tests for dashboard tests
 13. Migrate tests for book-detail tests
+14. Add nx/jest
+15. Caveat: nx/jest look for the supporting versions in their package.json
