@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { Book } from '../app.model';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 
 fdescribe('BookDetailComponent', () => {
   let component: BookDetailComponent;
@@ -47,7 +48,16 @@ fdescribe('BookDetailComponent', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });
+  it('should return back to dashboard on click', () => {
+    fixture.detectChanges();
+    let location = TestBed.inject(Location);
+    const locationSpy = spyOn(location, 'back');
 
+    const btn = fixture.debugElement.query(By.css('.bk-dashboard'));
+    btn.triggerEventHandler('click', null);
+
+    expect(locationSpy).toHaveBeenCalled();
+  });
   it('should return the book for the id selected on init', () => {
     fixture.detectChanges();
     const testData: Book = {
