@@ -1,27 +1,28 @@
-# NgKeralamMeetupDemo
+# NgKeralamMeetupDemo Add Jest Demo 01
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
+1. Install
 
-## Development server
+   ```yarn add -D jest jest-preset-angular @types/jest
+      # or
+      npm install -D jest jest-preset-angular @types/jest```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2. Comment out the code in test.ts and import the jest-preset
 
-## Code scaffolding
+3. Create jest.config.js file.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+4. tsconfig.spec.json changes
+   1. Remove the jasmine from types config
+   2. Remove src/tests.ts from files array
+5. Run the tests
+    You will see Can't resolve all parameters for components
+6. tsconfig.spec.json changes
+    1. emitDecoratorMetadata: true
+7. Go through the settings of jest-preset
+    1. moduleNameMapper
+    2. transformIgnorePatterns
+8. Allow JS files in your TS compilerOptions: tsconfig.spec.json changes
+    allowJs: true
+    transformIgnorePatterns: add the lib
+9. mock the library
+10. If You are using Angular version <= 7. Your jest.config.js settings will be different.
+    Switch to relevant branch in jest-preset and copy those settings.

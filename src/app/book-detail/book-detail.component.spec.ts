@@ -10,88 +10,88 @@ import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-fdescribe('BookDetailComponent', () => {
-  let component: BookDetailComponent;
-  let fixture: ComponentFixture<BookDetailComponent>;
-  let httpClient: HttpClient;
-  let httpTestingController: HttpTestingController;
+// xdescribe('BookDetailComponent', () => {
+//   let component: BookDetailComponent;
+//   let fixture: ComponentFixture<BookDetailComponent>;
+//   let httpClient: HttpClient;
+//   let httpTestingController: HttpTestingController;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [CommonModule, FormsModule, HttpClientTestingModule, RouterTestingModule],
-      declarations: [BookDetailComponent],
-      providers: [
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            snapshot: {
-              paramMap: {
-                get: (id) => "1"
-              }
-            }
-          }
-        }
-      ]
-    })
-      .compileComponents();
-  }));
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       imports: [CommonModule, FormsModule, HttpClientTestingModule, RouterTestingModule],
+//       declarations: [BookDetailComponent],
+//       providers: [
+//         {
+//           provide: ActivatedRoute,
+//           useValue: {
+//             snapshot: {
+//               paramMap: {
+//                 get: (id) => "1"
+//               }
+//             }
+//           }
+//         }
+//       ]
+//     })
+//       .compileComponents();
+//   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(BookDetailComponent);
-    component = fixture.componentInstance;
-    httpClient = TestBed.inject(HttpClient);
-    httpTestingController = TestBed.inject(HttpTestingController);
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(BookDetailComponent);
+//     component = fixture.componentInstance;
+//     httpClient = TestBed.inject(HttpClient);
+//     httpTestingController = TestBed.inject(HttpTestingController);
 
-  });
+//   });
 
-  it('should create', () => {
-    fixture.detectChanges();
-    expect(component).toBeTruthy();
-  });
-  it('should return back to dashboard on click', () => {
-    fixture.detectChanges();
-    let location = TestBed.inject(Location);
-    const locationSpy = spyOn(location, 'back');
+//   it('should create', () => {
+//     fixture.detectChanges();
+//     expect(component).toBeTruthy();
+//   });
+//   it('should return back to dashboard on click', () => {
+//     fixture.detectChanges();
+//     let location = TestBed.inject(Location);
+//     const locationSpy = spyOn(location, 'back');
 
-    const btn = fixture.debugElement.query(By.css('.bk-dashboard'));
-    btn.triggerEventHandler('click', null);
+//     const btn = fixture.debugElement.query(By.css('.bk-dashboard'));
+//     btn.triggerEventHandler('click', null);
 
-    expect(locationSpy).toHaveBeenCalled();
-  });
-  it('should return the book for the id selected on init', () => {
-    fixture.detectChanges();
-    const testData: Book = {
-      id: "1",
-      name: "A",
-      author: "B",
-      publishedOn: "20-04-1997",
-      quantityAvailable: 10
-    };
-    expect(component.loaded).toBeFalse();
+//     expect(locationSpy).toHaveBeenCalled();
+//   });
+//   it('should return the book for the id selected on init', () => {
+//     fixture.detectChanges();
+//     const testData: Book = {
+//       id: "1",
+//       name: "A",
+//       author: "B",
+//       publishedOn: "20-04-1997",
+//       quantityAvailable: 10
+//     };
+//     expect(component.loaded).toBeFalse();
 
-    const req = httpTestingController.expectOne('/api/books/1');
-    expect(req.request.method).toEqual('GET');
-    req.flush(testData);
-    httpTestingController.verify();
+//     const req = httpTestingController.expectOne('/api/books/1');
+//     expect(req.request.method).toEqual('GET');
+//     req.flush(testData);
+//     httpTestingController.verify();
 
-    expect(component.book).toBe(testData);
-    expect(component.loaded).toBeTrue();
-  });
-  it('should save the the nw book data to the db', () => {
-    let location = TestBed.inject(Location);
-    component.book = {
-      id: "1",
-      name: "AA",
-      author: "BB",
-      publishedOn: "20-04-1997",
-      quantityAvailable: 10
-    };
-    component.onSubmit();
-    const locationSpy = spyOn(location, 'back');
-    const req = httpTestingController.expectOne('/api/books');
-    expect(req.request.method).toEqual('PUT');
-    req.flush({});
-    httpTestingController.verify();
-    expect(locationSpy).toHaveBeenCalled();
-  })
-});
+//     expect(component.book).toBe(testData);
+//     expect(component.loaded).toBeTrue();
+//   });
+//   it('should save the the nw book data to the db', () => {
+//     let location = TestBed.inject(Location);
+//     component.book = {
+//       id: "1",
+//       name: "AA",
+//       author: "BB",
+//       publishedOn: "20-04-1997",
+//       quantityAvailable: 10
+//     };
+//     component.onSubmit();
+//     const locationSpy = spyOn(location, 'back');
+//     const req = httpTestingController.expectOne('/api/books');
+//     expect(req.request.method).toEqual('PUT');
+//     req.flush({});
+//     httpTestingController.verify();
+//     expect(locationSpy).toHaveBeenCalled();
+//   })
+// });

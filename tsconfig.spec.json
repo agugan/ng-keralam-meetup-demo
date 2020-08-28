@@ -3,12 +3,13 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
+    "emitDecoratorMetadata": true,
+    "allowJs": true,
     "types": [
-      "jasmine"
+      "jest"
     ]
   },
   "files": [
-    "src/test.ts",
     "src/polyfills.ts"
   ],
   "include": [
