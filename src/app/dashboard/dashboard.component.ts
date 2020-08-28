@@ -19,17 +19,10 @@ export class DashboardComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-
     this.books = this.http.get<Array<Book>>(this.booksApiUrl).pipe(tap(val => {
       this.isLoaded = true;
       return val;
     }));
-  }
-
-  public editBook(book: Book){
-    console.log("Edit a Book", book.id);
-    this.router.navigate(['edit', book.id], {state: {
-     bookSelected: book }});
   }
 
 }

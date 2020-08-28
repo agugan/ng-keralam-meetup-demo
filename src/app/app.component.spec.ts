@@ -3,26 +3,30 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+    const {app} = setUp();
     expect(app).toBeTruthy();
   });
 
   it(`should have as title 'ng-keralam-meetup-demo'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+    const {app} = setUp();
     expect(app.title).toEqual('ng-keralam-meetup-demo');
   });
 });
+
+function setUp(){
+  TestBed.configureTestingModule({
+    imports: [
+      RouterTestingModule
+    ],
+    declarations: [
+      AppComponent
+    ],
+  }).compileComponents();
+
+  const fixture = TestBed.createComponent(AppComponent);
+  const app = fixture.componentInstance;
+
+  return { fixture, app};
+}

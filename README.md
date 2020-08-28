@@ -26,3 +26,6 @@
 9. mock the library
 10. If You are using Angular version <= 7. Your jest.config.js settings will be different.
     Switch to relevant branch in jest-preset and copy those settings.
+11. Talk about kentcdodds testing strategies. 
+12. Write tests for dashboard tests
+13. Migrate tests for book-detail tests
